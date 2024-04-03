@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { subscribe } from 'diagnostics_channel';
 
 @Component({
   selector: 'app-new-hero-page',
@@ -74,13 +75,17 @@ export class NewHeroPageComponent implements OnInit {
       data: this.heroForm.value,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (!result) return;
-
-      this.heroesService.deleteHero(this.currentHero.id).subscribe();
-      this.router.navigate(['/heroes/list']);
-      this.showSnackbar(`¡${this.currentHero.superhero} eliminado!`);
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((result: boolean) => result),
+        switchMap(() => this.heroesService.deleteHero(this.currentHero.id)),
+        filter((wasDeleted: boolean) => wasDeleted)
+      )
+      .subscribe(() => {
+        this.router.navigate(['/heroes/list']);
+        this.showSnackbar(`¡${this.currentHero.superhero} eliminado!`);
+      });
   }
 
   showSnackbar(message: string): void {
