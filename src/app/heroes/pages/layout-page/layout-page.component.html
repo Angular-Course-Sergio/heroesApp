@@ -19,8 +19,18 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
     <span class="spacer"></span>
-    <button mat-button>Logout</button>
+
+    <span>
+      <mat-icon>account_circle</mat-icon>
+      {{user?.email}}
+    </span>
+
+    <button mat-button (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      Cerrar sesión
+    </button>
   </mat-toolbar>
 
   <div class="container p-2">
