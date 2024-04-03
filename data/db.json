@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "usuario": "John Doe",
+      "user": "John Doe",
       "email": "john.due@gmail.com"
     }
   ],
@@ -13,8 +13,7 @@
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
       "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne",
-      "alt_img": null
+      "characters": "Bruce Wayne"
     },
     {
       "id": "dc-superman",
@@ -22,8 +21,7 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El",
-      "alt_img": "https://i.pinimg.com/736x/5d/b2/66/5db266341eb4cbf457a3f8d5b5d90112.jpg"
+      "characters": "Kal-El"
     },
     {
       "id": "dc-flash",
@@ -168,15 +166,6 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
-    },
-    {
-      "id": "s19Hsrk",
-      "superhero": "Hawkeye",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Clint Barton",
-      "first_appearance": "Tales of Suspense # 57",
-      "characters": "Clint Barton",
-      "alt_img": "https://i.pinimg.com/564x/cc/c2/9f/ccc29f78d4c1fa045ec5ce22540f2add.jpg"
     }
   ]
 }
