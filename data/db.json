@@ -176,6 +176,15 @@
       "first_appearance": "Captain America Comics #1",
       "characters": "Steve Rogers, Isaiah Bradley, John Walker, Sam Wilson, James Buchanan Barnes",
       "alt_img": "https://upload.wikimedia.org/wikipedia/en/b/bf/CaptainAmericaHughes.jpg"
+    },
+    {
+      "id": "s19Hsrk",
+      "superhero": "Hawkeye",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Clint Barton",
+      "first_appearance": "Tales of Suspense # 57",
+      "characters": "Clint Barton",
+      "alt_img": "https://i.pinimg.com/564x/cc/c2/9f/ccc29f78d4c1fa045ec5ce22540f2add.jpg"
     }
   ]
 }
