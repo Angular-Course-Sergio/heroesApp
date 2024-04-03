@@ -19,4 +19,11 @@ export class NewHeroPageComponent {
   });
 
   public publishers = Object.values(Publisher);
+
+  onSubmit(): void {
+    console.log({
+      formIsValid: this.heroForm.valid,
+      value: this.heroForm.value,
+    });
+  }
 }
