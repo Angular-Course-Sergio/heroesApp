@@ -1,20 +1,23 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-new-hero-page',
   templateUrl: './new-hero-page.component.html',
   styleUrl: './new-hero-page.component.css',
 })
-export class NewHeroPageComponent {
-  constructor(private heroesService: HeroesService) {}
+export class NewHeroPageComponent implements OnInit {
+  constructor(
+    private heroesService: HeroesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  get currentHero(): Hero {
-    const hero = this.heroForm.value as Hero;
-    return hero;
-  }
+  public publishers = Object.values(Publisher);
 
   public heroForm = new FormGroup({
     id: new FormControl<string>(''),
@@ -26,10 +29,36 @@ export class NewHeroPageComponent {
     alt_img: new FormControl(''),
   });
 
-  public publishers = Object.values(Publisher);
+  get currentHero(): Hero {
+    const hero = this.heroForm.value as Hero;
+    return hero;
+  }
+
+  ngOnInit(): void {
+    if (!this.router.url.includes('edit')) return;
+
+    this.activatedRoute.params
+      .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
+      .subscribe((hero) => {
+        if (!hero) return this.router.navigate(['/heroes/list']);
+        this.heroForm.reset(hero);
+        return;
+      });
+  }
 
   onSubmit(): void {
     if (this.heroForm.invalid) return;
+
+    if (this.currentHero.id) {
+      this.heroesService.updateHero(this.currentHero).subscribe((hero) => {
+        // TODO: Mostar snackbar
+      });
+      return;
+    }
+
+    this.heroesService.addHero(this.currentHero).subscribe((hero) => {
+      // TODO: Mostar snackbar y navegar a /heroes/edit/hero.id
+    });
 
     //this.heroesService.addHero();
   }
