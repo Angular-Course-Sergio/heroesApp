@@ -13,7 +13,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
       "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne"
+      "characters": "Bruce Wayne",
+      "alt_img": null
     },
     {
       "id": "dc-superman",
@@ -167,15 +168,6 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
-    },
-    {
-      "id": "BSHBV_E",
-      "superhero": "Captain America",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Steve Rogers",
-      "first_appearance": "Captain America Comics #1",
-      "characters": "Steve Rogers, Isaiah Bradley, John Walker, Sam Wilson, James Buchanan Barnes",
-      "alt_img": "https://upload.wikimedia.org/wikipedia/en/b/bf/CaptainAmericaHughes.jpg"
     },
     {
       "id": "s19Hsrk",
